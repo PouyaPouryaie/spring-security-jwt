@@ -2,6 +2,7 @@ package ir.bigz.springboot.springsecurityjwt.controller;
 
 import ir.bigz.springboot.springsecurityjwt.dto.JwtAuthenticationResponse;
 import ir.bigz.springboot.springsecurityjwt.dto.RefreshTokenRequest;
+import ir.bigz.springboot.springsecurityjwt.dto.SignInRequest;
 import ir.bigz.springboot.springsecurityjwt.dto.SignUpRequest;
 import ir.bigz.springboot.springsecurityjwt.entity.User;
 import ir.bigz.springboot.springsecurityjwt.service.AuthenticationService;
@@ -24,6 +25,11 @@ public class AuthenticationController {
     @PostMapping("/signup")
     public ResponseEntity<User> signUp(@RequestBody SignUpRequest signUpRequest) {
         return ResponseEntity.ok(authenticationService.signUp(signUpRequest));
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<JwtAuthenticationResponse> signIn(@RequestBody SignInRequest signInRequest) {
+        return ResponseEntity.ok(authenticationService.signIn(signInRequest));
     }
 
     @PostMapping("/refresh")
